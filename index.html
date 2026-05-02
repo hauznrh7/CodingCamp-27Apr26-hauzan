@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense &amp; Budget Visualizer</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="storage-warning" hidden>
+      Could not load saved data. Your transactions will not be persisted this session.
+    </div>
+
+    <header>
+      <h1>Expense &amp; Budget Visualizer</h1>
+      <div id="balance-display">
+        Total: <span id="balance-amount">$0.00</span>
+      </div>
+    </header>
+
+    <main>
+      <section id="form-section">
+        <form id="transaction-form">
+          <input
+            id="item-name"
+            type="text"
+            placeholder="Item name"
+          />
+          <input
+            id="item-amount"
+            type="number"
+            placeholder="Amount"
+            min="0.01"
+            step="0.01"
+          />
+          <select id="item-category">
+            <option value="">Select category</option>
+            <option value="Food">Food</option>
+            <option value="Transport">Transport</option>
+            <option value="Fun">Fun</option>
+          </select>
+          <button type="submit">Add Transaction</button>
+          <div id="form-errors" aria-live="polite"></div>
+        </form>
+      </section>
+
+      <section id="chart-section">
+        <canvas id="spending-chart"></canvas>
+        <p id="chart-empty-state" hidden>No data yet — add a transaction to see your chart.</p>
+      </section>
+
+      <section id="list-section">
+        <ul id="transaction-list"></ul>
+        <p id="list-empty-state" hidden>No transactions recorded yet.</p>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
